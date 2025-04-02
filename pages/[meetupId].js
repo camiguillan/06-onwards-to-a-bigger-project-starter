@@ -2,6 +2,8 @@ import { MongoClient, ObjectId} from "mongodb";
 import MeetupDetails from "../components/meetups/meetupDetail"
 
 export default function MeetupDetail(props){
+
+    console.log(props)
     return <MeetupDetails title={props.title} 
     image={props.image}
     description={props.description}
