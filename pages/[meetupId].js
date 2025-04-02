@@ -20,9 +20,7 @@ export async function getStaticPaths(){
     
        const meetups = await meetupsCollection.find({}, {_id: 1}).toArray(); //we only get the fields we need  
         client.close();
-
-
-    //
+        //
     return {
         fallback: false ,
         //weather this path contains all the suported id values or not
@@ -66,7 +64,7 @@ export async function getStaticProps(context) {
                 title: selectedMeetup.title,
                 address: selectedMeetup.address,
                 description: selectedMeetup.description,
-                image: selectedMeetup,image
+                image: selectedMeetup.image
             }
         }
     }

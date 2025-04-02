@@ -77,7 +77,7 @@ export async function getStaticProps(){
             meetups: meetups.map(meetup => ({
                 title: meetup.title,
                 address: meetup.address,
-                image: meetup.image,
+                image: meetup.image.toString(),
                 description: meetup.description,
                 id: meetup._id.toString()
             }))
