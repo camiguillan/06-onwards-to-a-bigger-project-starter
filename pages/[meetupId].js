@@ -1,13 +1,13 @@
 import { MongoClient, ObjectId} from "mongodb";
 import MeetupDetails from "../components/meetups/meetupDetail"
 
-export default function MeetupDetail(props){
+export default function MeetupDetail({ meetupData }){
 
-    console.log(props)
-    return <MeetupDetails title={props.title} 
-    image={props.image}
-    description={props.description}
-    address={props.address}
+    console.log(meetupData)
+    return <MeetupDetails title={meetupData.title} 
+    image={meetupData.image}
+    description={meetupData.description}
+    address={meetupData.address}
     />
 
 }
