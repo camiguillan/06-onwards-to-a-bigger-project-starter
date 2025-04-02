@@ -61,7 +61,7 @@ export async function getStaticProps(){
 
     //console.log(id)
 
-   const client =  MongoClient.connect('mongodb+srv://camiguillan:cami12345@cluster0.zupnnxr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+   const client = await  MongoClient.connect('mongodb+srv://camiguillan:cami12345@cluster0.zupnnxr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
    //next js will detect this and wil not include it in server side codes 
 
    const db = client.db();

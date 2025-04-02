@@ -11,7 +11,7 @@ export default function MeetupDetail(props){
 }
 
 export async function getStaticPaths(){
-       const client =  MongoClient.connect('mongodb+srv://camiguillan:cami12345@cluster0.zupnnxr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+       const client =  await MongoClient.connect('mongodb+srv://camiguillan:cami12345@cluster0.zupnnxr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
        //next js will detect this and wil not include it in server side codes 
     
        const db = client.db();
@@ -39,12 +39,12 @@ export async function getStaticPaths(){
 export async function getStaticProps(context) {
     const meetupId = context.params.meetupId;
 
-    const client =  MongoClient.connect('mongodb+srv://camiguillan:cami12345@cluster0.zupnnxr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+    const client =  await MongoClient.connect('mongodb+srv://camiguillan:cami12345@cluster0.zupnnxr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
        //next js will detect this and wil not include it in server side codes 
     
     const db = client.db();
 
-        
+
     
     const meetupsCollection = db.collection('meetups');
 
