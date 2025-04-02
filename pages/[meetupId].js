@@ -29,7 +29,7 @@ export async function getStaticPaths(){
         //if it set to false -> we defined all the suported id values we need 
         paths: meetups.map(meetup => ({
             params: {
-                meetupId: meetup._id
+                meetupId: meetup._id.toString()
             },
         }))
     }
