@@ -43,6 +43,8 @@ export async function getStaticProps(context) {
        //next js will detect this and wil not include it in server side codes 
     
     const db = client.db();
+
+        
     
     const meetupsCollection = db.collection('meetups');
 
