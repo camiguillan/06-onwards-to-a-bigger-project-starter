@@ -1,3 +1,4 @@
+import { MongoClient } from 'mongodb';
 import MeetupList from '../components/meetups/MeetupList.js';
 
 const DUMMY_MEETUPS = [
@@ -38,10 +39,7 @@ export default function HomePage(props){
 //     }
 // }
 
-
-
-
-export async function getStaticProps(context){
+export async function getStaticProps(){
     //allowed to by async -> return a promise -> waits till the data is loaded 
     // allows to load the data before the page is loaded 
     //executed during the build process
@@ -52,9 +50,26 @@ export async function getStaticProps(context){
 
     //console.log(id)
 
+   const client =  MongoClient.connect('mongodb+srv://camiguillan:cami12345@cluster0.zupnnxr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+   //next js will detect this and wil not include it in server side codes 
+
+   const db = client.db();
+
+   const meetupsCollection = db.collection('meetups');
+
+   const meetups = meetupsCollection.find().toArray(); 
+
+   client.close();
+
     return {
         props: {
-            meetups: DUMMY_MEETUPS
+            meetups: meetups.map(meetup => ({
+                title: meetup.title,
+                address: meetup.address,
+                image: meetup.image,
+                description: meetup.description,
+                id: meetup._id.toString()
+            }))
         },
         revalidate: 10 //number of secods next will wait till refreshing the data. (new request coming in)
     }
