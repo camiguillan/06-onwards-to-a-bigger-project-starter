@@ -22,12 +22,35 @@ export default function HomePage(props){
 
 }
 
-export async function getStaticProps(){
+// export async function getServerSideProps(context){
+//     //runs on the server after deployment -> neever in the client side 
+//     //you can fetch data from apis -> that have credentials 
+//     //runs for every incoming request 
+//     // use when -> you need concrete access to the object and data gets refreshed frequently 
+
+//    const req =  context.req;
+//    const res = context.res
+
+//     return {
+//         props: {
+//              meetups: DUMMY_MEETUPS
+//         }
+//     }
+// }
+
+
+
+
+export async function getStaticProps(context){
     //allowed to by async -> return a promise -> waits till the data is loaded 
     // allows to load the data before the page is loaded 
     //executed during the build process
     //you can: fetch data from API 
     //down side: data can be outdated -> only can be updated when re build and re deploy 
+
+    //const id = context.params.meetupId; //we need to pre generate all the paths with the  IDs that we are trying to fetch
+
+    //console.log(id)
 
     return {
         props: {
